@@ -1,0 +1,33 @@
+table {
+	border: 1px solid;
+	border-collapse: collapse;
+	padding: 10px;
+}
+tr td {
+	border: 1px solid;
+}
+td {
+	padding: 10px;
+}
+div.center table {
+	margin: 0 auto;
+}
+.centered {
+	text-align: center;
+}
+.logout-btn-block {
+	text-align: right;
+} 
+.logout-button {
+	color: white;
+	background: #095484;
+	margin-top: 10px;
+	margin-right: 10px;
+	padding: 10px;
+	border: none;
+	border-radius: 5px; 
+	cursor: pointer;
+}
+button:hover {
+    background: #0666a3;
+}

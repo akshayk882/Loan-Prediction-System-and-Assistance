@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style_predict.css' %}">    
+    <title>Prediction</title>
+</head>
+<body bgcolor=#98FB98>
+	<div class="logout-btn-block">
+	 <a href="/../accounts/logout"><button class="logout-button">Logout</button></a> 
+    </div>
+	<div class="centered">
+   	<h1>{{result}}</h1> 
+	</div>
+    <h3 class="centered">Your Application will be {{prediction}}
+        
+    </h3> 
+   <p class="centered"><b>Details you provided:</b></p>
+	<div class=center>
+	<table>
+		<tr>
+			<td>Gender</td>
+			<td>{{Gender}}</td>
+		</tr>
+		<tr>
+			<td>Phone</td>
+			<td>{{phone}}</td>
+		</tr>
+		<tr>
+			<td>Education</td>
+			<td>{{Education}}</td>
+		</tr>
+		<tr>
+			<td>Dependents</td>
+			<td>{{Dependents}}</td>
+		</tr>
+		<tr>
+			<td>Employed</td>
+			<td>{{Employed}}</td>
+		</tr>
+		<tr>
+			<td>Applicant Income</td>
+			<td>RS {{Applicant_income}}</td>
+		</tr>
+		<tr>
+			<td>Co Applicant Income</td>
+			<td>RS {{Co_Applicant_income}}</td>
+		</tr>
+		<tr>
+			<td>Loan Amount</td>
+			<td>RS {{Loan_Amount}}</td>
+		</tr>
+		<tr>
+			<td>Loan Tenure</td>
+			<td>{{Loan_Tenure}}</td>
+		</tr>
+		<tr>
+			<td>Credit</td>
+			<td>{{Credit}}</td>
+		</tr>
+		<tr>
+			<td>Property</td>
+			<td>{{Property}}</td>
+		</tr>
+	</table>
+	</div>
+<!--	<p>Gender: {{Gender}}</p>
+	<p>Phone: {{phone}}</p>
+	<p>Education: {{Education}}</p>
+	<p>Dependents: {{Dependents}}</p>
+	<p>Employed: {{Employed}}</p>
+	<p>Applicant Income: {{Applicant_income}}</p>
+	<p>Co-Applicant Income: {{Co_Applicant_income}}</p>	
+	<p>Loan Amount: {{Loan_Amount}}</p>
+	<p>Loan Tenure: {{Loan_Tenure}}</p>
+	<p>Credit: {{Credit}}</p>
+	<p>property: {{Property}}</p>-->
+	{% if prediction == "Approved" %}
+	<h3 class="centered"> Banks you can issue loan from: </h3>
+	
+	<div class="center">
+	<table>
+		{%if Loan_Amount < 500000%}
+		{%for x in Banks%}
+		<tr>
+			<td>{{x}}</td>
+		</tr>
+		{% endfor %}
+		{% else %}
+		{%for banklist in Banks%}
+		{%for bank in banklist%}
+		<tr>
+			<td>{{bank}}</td>
+		</tr>
+		{% endfor %}
+		{% endfor %}
+		{% endif %}
+
+	</table>
+	{% else %}
+	<h3 class="centered">To be Applicable for Loan you need to save {{Saving}} % of your total Income.</h3>
+	{% endif %}
+	</div>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h2>Success</h2> 
+    <h3>Your Approval Status : {{prediction}}
+        
+    </h3> 
+   <h3>The Attributes are  : {{attributes}}</h3>
+</body>
+</html> -->
